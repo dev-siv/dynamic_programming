@@ -1,4 +1,5 @@
-'''Pattern of overlapping subproblems is called dynamic programming'''
+'''Programming technique used to solve pattern of 
+overlapping subproblems is called dynamic programming'''
 
 from datetime import  date, datetime
 def fib(n):
@@ -476,4 +477,24 @@ print(how_sum(7,[3,4,5]))
 print(how_sum(300, [7, 14]))
 print(f"It took {datetime.now()-start} seconds to finish this operation.")
 
+print('bestSum by TABULATION'.center(100,'.'))
 
+def best_sum(target_sum, num_list):
+    table = [None] * (target_sum+1)
+    table[0] = []
+    for index in range(target_sum+1):
+        if table[index] != None:
+            for num in num_list:
+                try:
+                    combination = table[index] + [num]
+                    if len(combination) < len(table[index+num]):
+                        table[index+num] = combination
+                except:
+                    pass
+
+    return table[target_sum]
+
+start = datetime.now()
+print(how_sum(8,[2,3,5]))
+print(how_sum(300, [7, 14]))
+print(f"It took {datetime.now()-start} seconds to finish this operation.")
