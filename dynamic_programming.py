@@ -454,3 +454,26 @@ def can_sum(target_sum, num_list):
 start = datetime.now()
 print(can_sum(7,[5,10,4]))
 print(f"It took {datetime.now()-start} seconds to finish this operation.")
+
+print('howSUM by TABULATION'.center(100,'.'))
+
+
+def how_sum(target, num_list):
+    table = [None] * (target+1)
+    table[0] = []
+    for index in range(target+1):
+        if table[index] is not None:
+            for num in num_list:
+                try:
+                    table[index+num] = table[index]+[num]
+                except:
+                    pass
+        
+    return table[target]
+
+start = datetime.now()
+print(how_sum(7,[3,4,5]))
+print(how_sum(300, [7, 14]))
+print(f"It took {datetime.now()-start} seconds to finish this operation.")
+
+
