@@ -512,5 +512,21 @@ def can_construct(target, word_bank):
                 if target[index:(index+len(word))] == word:
                     table[index+len(word)] = True
     return table[len(target)]
-    
+
 print(can_construct('abcdef', ['ab','abc', 'cd', 'def', 'abcd']))
+
+
+print('count Construct by TABULATION'.center(100,'.'))
+
+def count_construct(target, word_bank):
+    table = [0] * (len(target)+1)
+    table[0] = 1
+    for index in range(len(table)):
+        for word in word_bank:
+            if target[index:(index+len(word))] == word:
+                table[index+len(word)] += table[index]
+    
+    return table[len(target)]
+
+print(count_construct('purple',['purp','p','le','purpl','pur']))
+print(count_construct('eeeeeeeeeeeeeeeeeef',['e', 'ee', 'eee', 'eeee']))
