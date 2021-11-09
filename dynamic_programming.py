@@ -500,3 +500,17 @@ print(best_sum(7,[2,3,5,4,7]))
 print(best_sum(300, [7, 14]))
 print(best_sum(100,[5,20,25,50]))
 print(f"It took {datetime.now()-start} seconds to finish this operation.")
+
+print('canConstruct by TABULATION'.center(100,'.'))
+
+def can_construct(target, word_bank):
+    table = [False] * (len(target)+1)
+    table[0] = True
+    for index in range(len(table)):
+        if table[index]:
+            for word in word_bank:
+                if target[index:(index+len(word))] == word:
+                    table[index+len(word)] = True
+    return table[len(target)]
+    
+print(can_construct('abcdef', ['ab','abc', 'cd', 'def', 'abcd']))
