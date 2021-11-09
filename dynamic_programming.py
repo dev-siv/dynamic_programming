@@ -1,9 +1,6 @@
 '''Pattern of overlapping subproblems is called dynamic programming'''
 
 from datetime import  date, datetime
-from types import TracebackType, resolve_bases
-from typing import SupportsRound, TextIO, TypeGuard, final
-
 def fib(n):
     if n <= 2:
         return 1
