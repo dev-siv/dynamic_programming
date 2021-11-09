@@ -530,3 +530,19 @@ def count_construct(target, word_bank):
 
 print(count_construct('purple',['purp','p','le','purpl','pur']))
 print(count_construct('eeeeeeeeeeeeeeeeeef',['e', 'ee', 'eee', 'eeee']))
+
+print('all construct by TABULATION'.center(100,'.'))
+
+def all_construct(target, word_bank):
+    table = [[] for index in range(len(target)+1)]
+    table[0] = [[]]
+    for index in range(len(table)):
+        for word in word_bank:
+            if target[index: (index+len(word))] == word:
+                combinations = []
+                for val in table[index]:
+                    combinations = val + [word]
+                    table[index+len(word)].append(combinations)
+    return table[len(target)]
+
+print(all_construct('purple',['purp','p','le','purpl','pur']))
