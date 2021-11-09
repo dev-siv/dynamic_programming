@@ -485,16 +485,18 @@ def best_sum(target_sum, num_list):
     for index in range(target_sum+1):
         if table[index] != None:
             for num in num_list:
+                combination = table[index] + [num]
                 try:
-                    combination = table[index] + [num]
-                    if len(combination) < len(table[index+num]):
+                    if (len(table[index+num]) > len(combination)) or (table[index+num] == None):
                         table[index+num] = combination
                 except:
-                    pass
+                    if index+num <= target_sum:
+                        table[index+num] = combination
 
     return table[target_sum]
 
 start = datetime.now()
-print(how_sum(8,[2,3,5]))
-print(how_sum(300, [7, 14]))
+print(best_sum(7,[2,3,5,4,7]))
+print(best_sum(300, [7, 14]))
+print(best_sum(100,[5,20,25,50]))
 print(f"It took {datetime.now()-start} seconds to finish this operation.")
